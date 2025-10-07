@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <title>Interactive Circle Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Interactive Circle Generator</h1>
+    
+    <!-- Circle -->
+    <div class="circle" id="circle">
+        Click buttons to change me!
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <button onclick="changeColor()">Change Color</button>
+        <button onclick="changeShape()">Toggle Shape</button>
+        <button onclick="changeText()">Feel-Good Message</button>
+        <button onclick="randomizeCircle()">Randomize Everything</button>
+    </div>
+
+    <script>
+        const circle = document.getElementById('circle');
+        const messages = [
+            "You are awesome!",
+            "Keep smiling 😊",
+            "Believe in yourself!",
+            "You can do it!",
+            "Stay positive 🌟",
+            "Good things are coming!"
+        ];
+
+        function getRandomGradient() {
+            const gradients = [
+                'linear-gradient(135deg, #667eea, #764ba2)',
+                'linear-gradient(135deg, #f7971e, #ffd200)',
+                'linear-gradient(135deg, #f953c6, #b91d73)',
+                'linear-gradient(135deg, #43e97b, #38f9d7)',
+                'linear-gradient(135deg, #fa709a, #fee140)'
+            ];
+            return gradients[Math.floor(Math.random() * gradients.length)];
+        }
+
+        function changeColor() {
+            circle.style.background = getRandomGradient();
+        }
+
+        function changeShape() {
+            if(circle.style.borderRadius === '50%'){
+                circle.style.borderRadius = '20%'; // change to rounded square
+            } else {
+                circle.style.borderRadius = '50%';
+            }
+        }
+
+        function changeText() {
+            circle.textContent = messages[Math.floor(Math.random() * messages.length)];
+        }
+
+        function randomizeCircle() {
+            changeColor();
+            changeShape();
+            changeText();
+        }
+    </script>
+</body> 
+</html>
